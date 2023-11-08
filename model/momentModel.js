@@ -1,30 +1,32 @@
 const mongoose = require("mongoose");
+const ObjectId = mongoose.ObjectId;
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const momentSchema = new Schema(
   {
-    fullname: {
+    title: {
       type: String,
       required: true,
     },
-    email: {
+    tag: {
+      type: [],
+      required: true,
+    },
+    image: {
       type: String,
       required: true,
     },
-    password: {
+    comment: {
       type: String,
       required: true,
     },
-    mobile: {
-      type: String,
-      required: true,
-    },
-    country: {
-      type: String,
+    userId: {
+      type: ObjectId,
+      ref: "user",
       required: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("moment", momentSchema);

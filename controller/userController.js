@@ -20,7 +20,7 @@ const addUser = async (req, res) => {
     });
     const savedUser = await user.save();
     res.status(200).send({
-      userId: savedUser,
+      savedUser,
       message: "Confirm link sent successfully",
     });
   } catch (err) {
