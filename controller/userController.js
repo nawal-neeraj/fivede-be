@@ -2,9 +2,9 @@ const User = require("../model/userModel");
 
 const addUser = async (req, res) => {
   try {
-    let { fullname, email, password, mobile, country } = req.body;
+    let { firstname, lastname, email, password, mobile, country } = req.body;
     const userExist = await User.findOne({
-      $or: [{ email: email.toLowerCase() }, { fullname }],
+      $or: [{ email: email.toLowerCase() }, { firstname }],
     });
     if (userExist) {
       return res
@@ -12,7 +12,8 @@ const addUser = async (req, res) => {
         .send({ error: "Email or user name is already exists" });
     }
     const user = new User({
-      fullname,
+      firstname,
+      lastname,
       email,
       password,
       mobile,
