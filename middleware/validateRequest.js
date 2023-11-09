@@ -28,6 +28,7 @@ const validateMoment = (req, res, next) => {
     tag: Joi.array().min(1).required(),
     image: Joi.string().required(),
     comment: Joi.string().min(0).max(100).required(),
+    userId: Joi.string().required(),
   });
   const { error } = momentSchema.validate(req.body);
   if (error) {
