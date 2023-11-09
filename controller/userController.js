@@ -1,4 +1,5 @@
 const User = require("../model/userModel");
+const { hashPassword } = require("../util/encryption");
 
 const addUser = async (req, res) => {
   try {
@@ -11,18 +12,19 @@ const addUser = async (req, res) => {
         .status(200)
         .send({ error: "Email or user name is already exists" });
     }
+    const hashedPassword = await hashPassword(password);
     const user = new User({
       firstname,
       lastname,
       email,
-      password,
+      password: hashedPassword,
       mobile,
       country,
     });
     const savedUser = await user.save();
     res.status(200).send({
       savedUser,
-      message: "Confirm link sent successfully",
+      message: "User Saved successfully",
     });
   } catch (err) {
     res.status(500).send(err);
