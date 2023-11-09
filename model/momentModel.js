@@ -6,6 +6,7 @@ const momentSchema = new Schema(
   {
     title: {
       type: String,
+      trim: true,
       required: true,
     },
     tag: {

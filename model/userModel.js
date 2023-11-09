@@ -5,14 +5,17 @@ const userSchema = new Schema(
   {
     firstname: {
       type: String,
+      trim: true,
       required: true,
     },
     lastname: {
       type: String,
+      trim: true,
       required: true,
     },
     email: {
       type: String,
+      trim: true,
       required: true,
     },
     password: {
@@ -21,10 +24,12 @@ const userSchema = new Schema(
     },
     mobile: {
       type: String,
+      trim: true,
       required: true,
     },
     country: {
       type: String,
+      trim: true,
       required: true,
     },
   },
